@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haronid Miranda Morel | Administración · Control · Compliance</title>
+    <meta name="description" content="Profesional del área administrativa con experiencia en auditoría, compliance, control de gestión y reporting en entornos corporativos regulados.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════
+           VARIABLES Y RESET
+           ═══════════════════════════════════════════ */
+        :root {
+            --bg: #FAF8F4;
+            --green-dark: #3B5A3B;
+            --green-mid: #5A7A5A;
+            --green-light: #EFF4ED;
+            --green-lighter: #E6EDE6;
+            --text-dark: #2A3D2A;
+            --text-muted: #666;
+            --border: #E8E4DC;
+            --white: #FFFFFF;
+            --shadow-sm: 0 2px 8px rgba(59, 90, 59, 0.06);
+            --shadow-md: 0 8px 30px rgba(59, 90, 59, 0.08);
+            --shadow-lg: 0 20px 60px rgba(59, 90, 59, 0.1);
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        /* ═══════════════════════════════════════════
+           NAVEGACIÓN
+           ═══════════════════════════════════════════ */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            transition: all 0.4s var(--ease-out);
+            background: transparent;
+        }
+
+        .nav.scrolled {
+            background: rgba(250, 248, 244, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 var(--border);
+            padding: 0.7rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--green-dark);
+            transition: width 0.3s var(--ease-out);
+        }
+
+        .nav-links a:hover { color: var(--green-dark); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 28px;
+            height: 20px;
+            position: relative;
+            z-index: 101;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: var(--green-dark);
+            position: absolute;
+            left: 0;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 9px; }
+        .nav-toggle span:nth-child(3) { top: 18px; }
+
+        .nav-toggle.active span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; }
+        .nav-toggle.active span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        /* ═══════════════════════════════════════════
+           HERO
+           ═══════════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.12;
+        }
+
+        .hero-bg .circle-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--green-mid), transparent 70%);
+            top: -200px; right: -100px;
+            animation: float-slow 20s ease-in-out infinite;
+        }
+
+        .hero-bg .circle-2 {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, var(--green-dark), transparent 70%);
+            bottom: -100px; left: -50px;
+            animation: float-slow 25s ease-in-out infinite reverse;
+        }
+
+        .hero-bg .circle-3 {
+            width: 250px; height: 250px;
+            background: radial-gradient(circle, var(--green-light), transparent 60%);
+            top: 40%; left: 20%;
+            animation: float-slow 18s ease-in-out infinite 3s;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 750px;
+        }
+
+        .hero-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            position: relative;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 0.1s forwards;
+        }
+
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--green-mid);
+            opacity: 0.4;
+            animation: photo-ring 6s ease-in-out infinite;
+        }
+
+        .hero-photo::after {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            border: 1px solid var(--green-lighter);
+            opacity: 0.5;
+            animation: photo-ring 6s ease-in-out infinite 1s;
+        }
+
+        @keyframes photo-ring {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.04); opacity: 0.15; }
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            border: 3px solid var(--white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-greeting {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 0.2s forwards;
+        }
+
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 600;
+            color: var(--green-dark);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 0.4s forwards;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 560px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 0.6s forwards;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 0.8s forwards;
+        }
+
+        .hero-tag {
+            padding: 0.45rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--green-mid);
+            background: var(--white);
+            letter-spacing: 0.02em;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .hero-tag:hover {
+            background: var(--green-light);
+            border-color: var(--green-mid);
+            transform: translateY(-2px);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: var(--green-dark);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 100px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: all 0.3s var(--ease-out);
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 1s forwards;
+        }
+
+        .hero-cta:hover {
+            background: var(--green-mid);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-cta svg { transition: transform 0.3s var(--ease-out); }
+        .hero-cta:hover svg { transform: translateX(3px); }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 1.2s forwards;
+        }
+
+        .hero-scroll .line {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scroll .line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 50%;
+            background: var(--green-mid);
+            animation: scroll-line 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-line {
+            0% { top: -50%; }
+            100% { top: 150%; }
+        }
+
+        @keyframes hero-fade-up {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           SECCIONES GENERALES
+           ═══════════════════════════════════════════ */
+        .section {
+            padding: 4.5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 600;
+            color: var(--green-dark);
+            line-height: 1.2;
+        }
+
+        .section-line {
+            width: 40px;
+            height: 2px;
+            background: var(--green-mid);
+            margin: 1.2rem auto 0;
+            border-radius: 1px;
+        }
+
+        /* ═══════════════════════════════════════════
+           ABOUT / PERFIL
+           ═══════════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 1.02rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.85;
+        }
+
+        .about-text p:first-child::first-letter {
+            font-family: var(--font-display);
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            margin-top: 0.1rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-lighter);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+        }
+
+        /* ═══════════════════════════════════════════
+           EXPERIENCIA - TIMELINE
+           ═══════════════════════════════════════════ */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--border), var(--green-mid), var(--border));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -2.65rem;
+            top: 0.35rem;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 2px solid var(--green-mid);
+            z-index: 1;
+            transition: all 0.3s var(--ease-spring);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--green-mid);
+            transform: scale(1.3);
+            box-shadow: 0 0 0 4px rgba(90, 122, 90, 0.15);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .timeline-role {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            line-height: 1.3;
+        }
+
+        .timeline-date {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--green-mid);
+            background: var(--green-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ═══════════════════════════════════════════
+           SKILLS
+           ═══════════════════════════════════════════ */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-lighter);
+        }
+
+        .skill-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            color: var(--green-dark);
+        }
+
+        .skill-cat-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .skill-tag {
+            padding: 0.35rem 0.75rem;
+            background: var(--green-light);
+            color: var(--green-dark);
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: var(--green-dark);
+            color: var(--white);
+        }
+
+        /* ═══════════════════════════════════════════
+           PROYECTOS
+           ═══════════════════════════════════════════ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green-dark), var(--green-mid));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s var(--ease-out);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--green-lighter);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-number {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--green-lighter);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 0.6rem;
+            line-height: 1.3;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            flex: 1;
+        }
+
+        .project-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tool {
+            padding: 0.25rem 0.6rem;
+            background: var(--green-light);
+            color: var(--green-dark);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--green-dark);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--green-mid);
+            gap: 0.6rem;
+        }
+
+        .project-link.disabled {
+            color: var(--text-muted);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           CERTIFICACIONES
+           ═══════════════════════════════════════════ */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .cert-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            border-color: var(--green-lighter);
+        }
+
+        .cert-year {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--green-mid);
+            line-height: 1;
+            min-width: 50px;
+        }
+
+        .cert-info h3 {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        .cert-info p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ═══════════════════════════════════════════
+           EDUCACIÓN
+           ═══════════════════════════════════════════ */
+        .edu-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .edu-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            width: 340px;
+            transition: all 0.4s var(--ease-out);
+        }
+
+        .edu-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .edu-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--green-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+            color: var(--green-dark);
+        }
+
+        .edu-degree {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-school {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .edu-status {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            background: var(--green-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 100px;
+            margin-top: 0.5rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           IDIOMAS
+           ═══════════════════════════════════════════ */
+        .lang-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lang-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem 3rem;
+            text-align: center;
+            width: 240px;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .lang-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .lang-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .lang-level {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .lang-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--green-lighter);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .lang-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green-mid), var(--green-dark));
+            border-radius: 2px;
+            transition: width 1.2s var(--ease-out);
+            width: 0;
+        }
+
+        .lang-fill.animated { width: var(--level); }
+
+        /* ═══════════════════════════════════════════
+           CONTACTO
+           ═══════════════════════════════════════════ */
+        .contact-section {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 4.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section .section-label { color: rgba(255,255,255,0.5); }
+        .contact-section .section-title { color: var(--white); }
+        .contact-section .section-line { background: rgba(255,255,255,0.3); }
+
+        .contact-text {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            margin: 2rem 0;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 100px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s var(--ease-out);
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        .footer {
+            background: var(--green-dark);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.35);
+            font-size: 0.78rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           ANIMACIONES SCROLL REVEAL
+           ═══════════════════════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ═══════════════════════════════════════════
+           SEPARADOR DECORATIVO
+           ═══════════════════════════════════════════ */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            padding: 0 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-divider .leaf {
+            color: var(--green-lighter);
+        }
+
+        .section-divider .divider-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 200px;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 5rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right 0.4s var(--ease-out);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .nav-links.open { right: 0; }
+            .nav-toggle { display: block; }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .timeline { padding-left: 2rem; }
+            .timeline-dot { left: -1.65rem; }
+
+            .timeline-header {
+                flex-direction: column;
+            }
+
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-name { font-size: clamp(2.2rem, 8vw, 3rem); }
+
+            .section { padding: 3rem 1.5rem; }
+
+            .contact-links { flex-direction: column; align-items: center; }
+        }
+
+        @media (max-width: 480px) {
+            .about-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .stat-card { padding: 1.3rem 1rem; }
+            .stat-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ NAVEGACIÓN ═══ -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">H. Miranda</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#perfil" onclick="closeMenu()">Perfil</a></li>
+                <li><a href="#experiencia" onclick="closeMenu()">Experiencia</a></li>
+                <li><a href="#habilidades" onclick="closeMenu()">Habilidades</a></li>
+                <li><a href="#proyectos" onclick="closeMenu()">Proyectos</a></li>
+                <li><a href="#certificaciones" onclick="closeMenu()">Formación</a></li>
+                <li><a href="#contacto" onclick="closeMenu()">Contacto</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menú de navegación">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-photo">
+                <!-- Reemplazar con la foto real: src="foto-haronid.jpg" -->
+                <img src="foto.jpg" alt="Haronid Miranda Morel">
+            </div>
+            <p class="hero-greeting">Madrid, España</p>
+            <h1 class="hero-name">Haronid Miranda Morel</h1>
+            <p class="hero-tagline">Profesional administrativa con experiencia en auditoría, compliance, control de gestión y reporting en entornos corporativos y regulados.</p>
+            <div class="hero-tags">
+                <span class="hero-tag">Auditoría Interna</span>
+                <span class="hero-tag">Compliance</span>
+                <span class="hero-tag">Control de Gestión</span>
+                <span class="hero-tag">Reporting</span>
+                <span class="hero-tag">Excel Avanzado</span>
+            </div>
+            <a href="#contacto" class="hero-cta">
+                Contactar
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+        </div>
+        <div class="hero-scroll">
+            <span>Explorar</span>
+            <div class="line"></div>
+        </div>
+    </section>
+
+    <!-- ═══ PERFIL ═══ -->
+    <section class="section" id="perfil">
+        <div class="section-header reveal">
+            <p class="section-label">Sobre mí</p>
+            <h2 class="section-title">Perfil Profesional</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="about-text reveal">
+                <p>Profesional del área administrativa con experiencia en entornos corporativos y regulados, especializada en control documental, elaboración de informes, seguimiento de procesos internos, coordinación interdepartamental y soporte a dirección.</p>
+                <p>Formación en Administración de Empresas con manejo avanzado de Excel y Microsoft 365, combinando alta orientación al detalle, organización y capacidad de adaptación a herramientas corporativas. Actualmente becaria de Auditoría Interna en Santalucía, aplicando conocimientos de compliance y control adquiridos en el sector bancario dominicano.</p>
+            </div>
+            <div class="about-stats">
+                <div class="stat-card reveal reveal-delay-1">
+                    <div class="stat-number">+5</div>
+                    <div class="stat-label">Años de experiencia profesional</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-2">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Sectores: banca y seguros</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-3">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Certificaciones especializadas</div>
+                </div>
+                <div class="stat-card reveal reveal-delay-4">
+                    <div class="stat-number">B2</div>
+                    <div class="stat-label">Inglés certificado — British Council</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <svg class="leaf" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/><path d="M12 2c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"/><path d="M2 12h20"/></svg>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ═══ EXPERIENCIA ═══ -->
+    <section class="section" id="experiencia">
+        <div class="section-header reveal">
+            <p class="section-label">Trayectoria</p>
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3 class="timeline-role">Becaria de Auditoría Interna</h3>
+                    <span class="timeline-date">Mar 2026 – Actualidad</span>
+                </div>
+                <p class="timeline-company">Santalucía Servicios Compartidos — Madrid, España</p>
+                <p class="timeline-desc">Participo en el equipo de Auditoría Interna del grupo asegurador, colaborando en la ejecución de auditorías operativas y de cumplimiento bajo la regulación del mercado asegurador español. Apoyo en la revisión de controles internos, elaboración de informes de hallazgos y seguimiento de planes de mejora. Doy soporte en la documentación de procedimientos y matrices de riesgos, y colaboro en la elaboración de informes para la revisión del director de Auditoría y su presentación a la Comisión de Auditoría del Consejo de Administración.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3 class="timeline-role">Analista de Compliance</h3>
+                    <span class="timeline-date">Dic 2023 – Ene 2026</span>
+                </div>
+                <p class="timeline-company">Banco de Reservas — República Dominicana</p>
+                <p class="timeline-desc">Gestioné el monitoreo y seguimiento de incidencias de cumplimiento en la mayor entidad financiera del Estado dominicano (activos superiores a USD 15.000 M). Analicé el impacto de cambios regulatorios, coordiné planes de acción correctivos asegurando su cierre en plazo y la alineación con los estándares de la Superintendencia de Bancos. Elaboré reportes periódicos de gestión para la dirección.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3 class="timeline-role">Asistente Administrativa de Recursos Humanos</h3>
+                    <span class="timeline-date">Sep 2022 – Dic 2023</span>
+                </div>
+                <p class="timeline-company">Banco de Reservas — República Dominicana</p>
+                <p class="timeline-desc">Presté soporte administrativo especializado a la Dirección de Capital Humano, asegurando el cumplimiento de procedimientos internos y normativos. Gestioné el control documental, la correspondencia institucional y la coordinación de agendas de dirección con altos estándares de confidencialidad. Colaboré en auditorías internas y verificaciones administrativas, garantizando trazabilidad y exactitud de la información.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="timeline-header">
+                    <h3 class="timeline-role">Auxiliar de Gestión Documental</h3>
+                    <span class="timeline-date">Ago 2020 – Sep 2022</span>
+                </div>
+                <p class="timeline-company">Banco de Reservas — República Dominicana</p>
+                <p class="timeline-desc">Gestioné la digitalización, clasificación y control de expedientes críticos en la plataforma OnBase (ECM corporativo), garantizando estándares de calidad documental. Presté soporte a auditorías internas y validaciones administrativas, asegurando la integridad y disponibilidad de la información. Mantuve actualizado el archivo institucional digital con trazabilidad completa.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <svg class="leaf" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/><path d="M12 2c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"/><path d="M2 12h20"/></svg>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ═══ HABILIDADES ═══ -->
+    <section class="section" id="habilidades">
+        <div class="section-header reveal">
+            <p class="section-label">Competencias</p>
+            <h2 class="section-title">Habilidades Profesionales</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category reveal">
+                <div class="skill-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <h3 class="skill-cat-title">Ofimática y Datos</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Excel MOS</span>
+                    <span class="skill-tag">Power BI Básico</span>
+                    <span class="skill-tag">Microsoft 365</span>
+                    <span class="skill-tag">Excel: Gestión de Datos</span>
+                </div>
+            </div>
+            <div class="skill-category reveal reveal-delay-1">
+                <div class="skill-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
+                </div>
+                <h3 class="skill-cat-title">Compliance y Control</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Análisis Regulatorio</span>
+                    <span class="skill-tag">Control Interno</span>
+                    <span class="skill-tag">Auditoría</span>
+                    <span class="skill-tag">MetricStream</span>
+                </div>
+            </div>
+            <div class="skill-category reveal reveal-delay-2">
+                <div class="skill-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+                </div>
+                <h3 class="skill-cat-title">Gestión Documental</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">OnBase (ECM)</span>
+                    <span class="skill-tag">Control Documental</span>
+                    <span class="skill-tag">Elaboración de Informes</span>
+                    <span class="skill-tag">Reporting</span>
+                </div>
+            </div>
+            <div class="skill-category reveal reveal-delay-3">
+                <div class="skill-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3 class="skill-cat-title">Soft Skills</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Orientación al detalle</span>
+                    <span class="skill-tag">Comunicación corporativa</span>
+                    <span class="skill-tag">Ética profesional</span>
+                    <span class="skill-tag">Adaptabilidad</span>
+                    <span class="skill-tag">Coordinación interdepartamental</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <svg class="leaf" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/><path d="M12 2c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"/><path d="M2 12h20"/></svg>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ═══ PROYECTOS ═══ -->
+    <section class="section" id="proyectos">
+        <div class="section-header reveal">
+            <p class="section-label">Portafolio</p>
+            <h2 class="section-title">Proyectos</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card reveal">
+                <div class="project-number">01</div>
+                <h3 class="project-title">Dashboard de Monitoreo de Incidencias de Compliance</h3>
+                <p class="project-desc">Panel ejecutivo en Power BI que simula el seguimiento de incidencias regulatorias de una entidad financiera: KPIs de cumplimiento, análisis por normativa, criticidad y plazos de resolución.</p>
+                <div class="project-tools">
+                    <span class="project-tool">Power BI</span>
+                    <span class="project-tool">Excel</span>
+                    <span class="project-tool">Datos Sintéticos</span>
+                </div>
+                <a href="#" class="project-link disabled">
+                    Próximamente
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="project-card reveal reveal-delay-1">
+                <div class="project-number">02</div>
+                <h3 class="project-title">Simulador de Plan de Auditoría Anual</h3>
+                <p class="project-desc">Herramienta de priorización basada en riesgo que genera automáticamente un plan de auditoría a partir del universo auditable, aplicando scoring ponderado por impacto, regulación y hallazgos previos.</p>
+                <div class="project-tools">
+                    <span class="project-tool">Excel Avanzado</span>
+                    <span class="project-tool">Metodología IIA</span>
+                    <span class="project-tool">Scoring</span>
+                </div>
+                <a href="#" class="project-link disabled">
+                    Próximamente
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="project-card reveal reveal-delay-2">
+                <div class="project-number">03</div>
+                <h3 class="project-title">Checklist de Control Interno — Framework COSO</h3>
+                <p class="project-desc">Herramienta de evaluación interactiva basada en los 5 componentes y 17 principios de COSO 2013, con scoring de madurez, radar chart y generación automática de informe de gaps.</p>
+                <div class="project-tools">
+                    <span class="project-tool">React</span>
+                    <span class="project-tool">COSO 2013</span>
+                    <span class="project-tool">Control Interno</span>
+                </div>
+                <a href="#" class="project-link disabled">
+                    Próximamente
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <svg class="leaf" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/><path d="M12 2c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"/><path d="M2 12h20"/></svg>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ═══ CERTIFICACIONES ═══ -->
+    <section class="section" id="certificaciones">
+        <div class="section-header reveal">
+            <p class="section-label">Formación continua</p>
+            <h2 class="section-title">Certificaciones</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="certs-grid">
+            <div class="cert-card reveal">
+                <div class="cert-year">25</div>
+                <div class="cert-info">
+                    <h3>Monográfico de Compliance Officer</h3>
+                    <p>Centro de Estudios Financieros (CEF) · Madrid</p>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-1">
+                <div class="cert-year">25</div>
+                <div class="cert-info">
+                    <h3>Microsoft Office Specialist: Excel</h3>
+                    <p>Microsoft</p>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-2">
+                <div class="cert-year">25</div>
+                <div class="cert-info">
+                    <h3>El Arte de Establecer Controles</h3>
+                    <p>Ernesto Bazán Training Corporation</p>
+                </div>
+            </div>
+            <div class="cert-card reveal reveal-delay-3">
+                <div class="cert-year">25</div>
+                <div class="cert-info">
+                    <h3>Excel: Gestión de Datos</h3>
+                    <p>Universitat Politècnica de València (UPV)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Educación dentro de la misma sección -->
+        <div class="section-header reveal" style="margin-top: 3.5rem;">
+            <p class="section-label">Formación académica</p>
+            <h2 class="section-title">Educación</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="edu-grid">
+            <div class="edu-card reveal">
+                <div class="edu-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                </div>
+                <h3 class="edu-degree">Grado en Administración de Empresas</h3>
+                <p class="edu-school">Universidad del Caribe — República Dominicana</p>
+                <span class="edu-status">Cursando último año</span>
+            </div>
+            <div class="edu-card reveal reveal-delay-1">
+                <div class="edu-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                </div>
+                <h3 class="edu-degree">Prevención y Gestión Integral de Riesgos</h3>
+                <p class="edu-school">UTAMED — Universidad Online</p>
+                <span class="edu-status">Mar 2026 – En curso</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider">
+        <div class="divider-line"></div>
+        <svg class="leaf" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 3-.3 4.3-.9"/><path d="M12 2c3 3 4.5 7 4.5 10s-1.5 7-4.5 10"/><path d="M2 12h20"/></svg>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- ═══ IDIOMAS ═══ -->
+    <section class="section" id="idiomas">
+        <div class="section-header reveal">
+            <p class="section-label">Comunicación</p>
+            <h2 class="section-title">Idiomas</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="lang-grid">
+            <div class="lang-card reveal">
+                <h3 class="lang-name">Español</h3>
+                <p class="lang-level">Nativo</p>
+                <div class="lang-bar">
+                    <div class="lang-fill" style="--level: 100%;"></div>
+                </div>
+            </div>
+            <div class="lang-card reveal reveal-delay-1">
+                <h3 class="lang-name">Inglés</h3>
+                <p class="lang-level">B2 — British Council · 2026</p>
+                <div class="lang-bar">
+                    <div class="lang-fill" style="--level: 70%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CONTACTO ═══ -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-inner">
+            <div class="section-header reveal">
+                <p class="section-label">Hablemos</p>
+                <h2 class="section-title">Contacto</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="contact-text reveal">Disponible para nuevas oportunidades profesionales en administración, control de gestión, compliance y auditoría en Madrid y alrededores.</p>
+            <div class="contact-links reveal">
+                <a href="mailto:haronid.morel@outlook.com" class="contact-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    haronid.morel@outlook.com
+                </a>
+                <a href="tel:+34624430277" class="contact-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    +34 624 43 02 77
+                </a>
+                <a href="https://www.linkedin.com/in/haronid-miranda-morel" target="_blank" rel="noopener" class="contact-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Haronid Miranda Morel. Madrid, España.</p>
+    </footer>
+
+    <!-- ═══ JAVASCRIPT ═══ -->
+    <script>
+        // --- Navegación: scroll & mobile menu ---
+        const nav = document.getElementById('nav');
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('open');
+        });
+
+        function closeMenu() {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('open');
+        }
+
+        // --- Scroll Reveal ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Barras de idioma animadas ---
+        const langFills = document.querySelectorAll('.lang-fill');
+        const langObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        langFills.forEach(el => langObserver.observe(el));
+
+        // --- Smooth scroll para links internos ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
