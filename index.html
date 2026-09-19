@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haronid Miranda Morel | Administración · Control · Compliance</title>
-    <meta name="description" content="Profesional del área administrativa con experiencia en auditoría, compliance, control de gestión y reporting en entornos corporativos regulados.">
+    <title>Haronid Miranda Morel | Compliance · Auditoría Interna · Gestión de Riesgos</title>
+    <meta name="description" content="Profesional de Compliance y Auditoría Interna en el sector financiero y asegurador, especializada en control interno, gestión de riesgos y reporting regulatorio (Solvencia II, DORA, GDPR).">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -342,6 +342,43 @@
 
         .hero-cta svg { transition: transform 0.3s var(--ease-out); }
         .hero-cta:hover svg { transform: translateX(3px); }
+
+        /* --- Contenedor de botones del hero (Contactar + Descargar CV) --- */
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        /* --- Botón secundario: Descargar CV --- */
+        .hero-cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: transparent;
+            color: var(--green-dark);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            transition: all 0.3s var(--ease-out);
+            opacity: 0;
+            animation: hero-fade-up 0.8s var(--ease-out) 1.1s forwards;
+        }
+
+        .hero-cta-secondary:hover {
+            background: var(--white);
+            border-color: var(--green-mid);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-cta-secondary svg { transition: transform 0.3s var(--ease-out); }
+        .hero-cta-secondary:hover svg { transform: translateY(2px); }
 
         .hero-scroll {
             position: absolute;
@@ -688,6 +725,30 @@
 
         .project-card:hover::before {
             transform: scaleX(1);
+        }
+
+        /* --- Miniatura de vista previa del proyecto --- */
+        .project-thumb {
+            width: 100%;
+            height: 150px;                 /* modesto, "no muy grande" */
+            margin-bottom: 1.25rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--green-light); /* fondo mientras carga o si falta la imagen */
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;             /* recorta sin deformar */
+            object-position: top;          /* muestra la parte de arriba del informe (los KPIs) */
+            display: block;
+            transition: transform 0.5s var(--ease-out);
+        }
+
+        .project-card:hover .project-thumb img {
+            transform: scale(1.04);        /* zoom sutil al pasar el cursor: llama la atención */
         }
 
         .project-number {
@@ -1119,7 +1180,7 @@
     <!-- ═══ NAVEGACIÓN ═══ -->
     <nav class="nav" id="nav">
         <div class="nav-inner">
-            <a href="#" class="nav-logo">H. Miranda</a>
+            <a href="#" class="nav-logo">H. Morel</a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#perfil" onclick="closeMenu()">Perfil</a></li>
                 <li><a href="#experiencia" onclick="closeMenu()">Experiencia</a></li>
@@ -1143,23 +1204,30 @@
         </div>
         <div class="hero-content">
             <div class="hero-photo">
-                <!-- Reemplazar con la foto real: src="foto-haronid.jpg" -->
-                <img src="foto.jpg" alt="Haronid Miranda Morel">
+                <!-- Reemplazar con la foto real: src="assets/haronid.jpg" -->
+                <img src="assets/haronid.jpg" alt="Haronid Miranda Morel - Compliance y Auditoría Interna">
             </div>
             <p class="hero-greeting">Madrid, España</p>
             <h1 class="hero-name">Haronid Miranda Morel</h1>
-            <p class="hero-tagline">Profesional administrativa con experiencia en auditoría, compliance, control de gestión y reporting en entornos corporativos y regulados.</p>
+            <p class="hero-tagline">Profesional de Compliance y Auditoría Interna en el sector financiero y asegurador, especializada en control interno, gestión de riesgos y reporting en entornos regulados.</p>
             <div class="hero-tags">
                 <span class="hero-tag">Auditoría Interna</span>
                 <span class="hero-tag">Compliance</span>
-                <span class="hero-tag">Control de Gestión</span>
-                <span class="hero-tag">Reporting</span>
-                <span class="hero-tag">Excel Avanzado</span>
+                <span class="hero-tag">Gestión de Riesgos</span>
+                <span class="hero-tag">Control Interno</span>
+                <span class="hero-tag">Solvencia II</span>
             </div>
-            <a href="#contacto" class="hero-cta">
-                Contactar
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
+            <div class="hero-ctas">
+                <a href="#contacto" class="hero-cta">
+                    Contactar
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <!-- El CV va en assets/. El nombre del archivo debe coincidir EXACTO (mayúsculas incluidas) -->
+                <a href="assets/CV_Haronid_Morel.pdf" class="hero-cta-secondary" download="CV_Haronid_Morel.pdf">
+                    Descargar CV
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                </a>
+            </div>
         </div>
         <div class="hero-scroll">
             <span>Explorar</span>
@@ -1176,8 +1244,8 @@
         </div>
         <div class="about-grid">
             <div class="about-text reveal">
-                <p>Profesional del área administrativa con experiencia en entornos corporativos y regulados, especializada en control documental, elaboración de informes, seguimiento de procesos internos, coordinación interdepartamental y soporte a dirección.</p>
-                <p>Formación en Administración de Empresas con manejo avanzado de Excel y Microsoft 365, combinando alta orientación al detalle, organización y capacidad de adaptación a herramientas corporativas. Actualmente becaria de Auditoría Interna en Santalucía, aplicando conocimientos de compliance y control adquiridos en el sector bancario dominicano.</p>
+                <p>Profesional de Compliance y Auditoría Interna con más de 5 años en el sector financiero, actualmente en el equipo de Auditoría Interna de Santalucía (sector seguros), aplicando el marco regulatorio europeo: Solvencia II, DORA, GDPR y normativa del Banco de España.</p>
+                <p>Especializada en el seguimiento de incidencias de cumplimiento, la revisión de controles internos y la coordinación de planes de acción, combinando el rigor normativo con analítica de datos en Power BI, QlikView y Excel (MOS) y el uso de plataformas GRC como MetricStream. Su base administrativa y de gestión documental en banca aporta orientación al detalle y trazabilidad a cada proceso.</p>
             </div>
             <div class="about-stats">
                 <div class="stat-card reveal reveal-delay-1">
@@ -1273,6 +1341,7 @@
                 </div>
                 <h3 class="skill-cat-title">Ofimática y Datos</h3>
                 <div class="skill-tags">
+                    <span class="skill-tag">QlikView</span>				
                     <span class="skill-tag">Excel MOS</span>
                     <span class="skill-tag">Power BI Básico</span>
                     <span class="skill-tag">Microsoft 365</span>
@@ -1288,6 +1357,7 @@
                     <span class="skill-tag">Análisis Regulatorio</span>
                     <span class="skill-tag">Control Interno</span>
                     <span class="skill-tag">Auditoría</span>
+                    <span class="skill-tag">Jira</span>					
                     <span class="skill-tag">MetricStream</span>
                 </div>
             </div>
@@ -1334,6 +1404,9 @@
         </div>
         <div class="projects-grid">
             <div class="project-card reveal">
+                <div class="project-thumb">
+                    <img src="assets/preview-01.jpg" alt="Vista previa del Dashboard de Incidencias de Compliance" loading="lazy">
+                </div>
                 <div class="project-number">01</div>
                 <h3 class="project-title">Dashboard de Monitoreo de Incidencias de Compliance</h3>
                 <p class="project-desc">Panel ejecutivo en Power BI que simula el seguimiento de incidencias regulatorias de una entidad financiera: KPIs de cumplimiento, análisis por normativa, criticidad y plazos de resolución.</p>
@@ -1342,36 +1415,41 @@
                     <span class="project-tool">Excel</span>
                     <span class="project-tool">Datos Sintéticos</span>
                 </div>
-                <a href="#" class="project-link disabled">
-                    Próximamente
+                <a href="PEGAR_URL_AQUÍ" class="project-link" target="_blank" rel="noopener">
+                    Ver proyecto
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
             <div class="project-card reveal reveal-delay-1">
+                <div class="project-thumb">
+                    <img src="assets/preview-02.jpg" alt="Vista previa del Simulador de Plan de Auditoría" loading="lazy">
+                </div>
                 <div class="project-number">02</div>
-                <h3 class="project-title">Simulador de Plan de Auditoría Anual</h3>
+                <h3 class="project-title">Simulador de Plan de Auditoría basado en Riesgo</h3>
                 <p class="project-desc">Herramienta de priorización basada en riesgo que genera automáticamente un plan de auditoría a partir del universo auditable, aplicando scoring ponderado por impacto, regulación y hallazgos previos.</p>
                 <div class="project-tools">
                     <span class="project-tool">Excel Avanzado</span>
                     <span class="project-tool">Metodología IIA</span>
                     <span class="project-tool">Scoring</span>
                 </div>
-                <a href="#" class="project-link disabled">
-                    Próximamente
+                <a href="PEGAR_URL_AQUÍ" class="project-link" target="_blank" rel="noopener">
+                    Ver proyecto
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
             <div class="project-card reveal reveal-delay-2">
+                <div class="project-thumb">
+                    <img src="assets/preview-03.jpg" alt="Vista previa del Evaluador de Controles Internos COSO/DORA" loading="lazy">
+                </div>
                 <div class="project-number">03</div>
-                <h3 class="project-title">Checklist de Control Interno — Framework COSO</h3>
+                <h3 class="project-title">Evaluador de Controles Internos (COSO/DORA)</h3>
                 <p class="project-desc">Herramienta de evaluación interactiva basada en los 5 componentes y 17 principios de COSO 2013, con scoring de madurez, radar chart y generación automática de informe de gaps.</p>
                 <div class="project-tools">
-                    <span class="project-tool">React</span>
-                    <span class="project-tool">COSO 2013</span>
-                    <span class="project-tool">Control Interno</span>
+                    <span class="project-tool">Excel</span>
+                    <span class="project-tool">Power BI</span>
                 </div>
-                <a href="#" class="project-link disabled">
-                    Próximamente
+                <a href="PEGAR_URL_AQUÍ" class="project-link" target="_blank" rel="noopener">
+                    Ver proyecto
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                 </a>
             </div>
@@ -1443,7 +1521,15 @@
                 </div>
                 <h3 class="edu-degree">Prevención y Gestión Integral de Riesgos</h3>
                 <p class="edu-school">UTAMED — Universidad Online</p>
-                <span class="edu-status">Mar 2026 – En curso</span>
+                <span class="edu-status">Mar 2026 – Sept 2026</span>
+            </div>
+            <div class="edu-card reveal reveal-delay-1">
+                <div class="edu-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+                </div>
+                <h3 class="edu-degree">Análisis de Estados Financieros y Económicos de la Empresa</h3>
+                <p class="edu-school">Universidad Nebrija</p>
+                <span class="edu-status">Sept 2026 – En curso</span>
             </div>
         </div>
     </section>
@@ -1487,7 +1573,7 @@
                 <h2 class="section-title">Contacto</h2>
                 <div class="section-line"></div>
             </div>
-            <p class="contact-text reveal">Disponible para nuevas oportunidades profesionales en administración, control de gestión, compliance y auditoría en Madrid y alrededores.</p>
+            <p class="contact-text reveal">Disponible para nuevas oportunidades profesionales en compliance, auditoría, gestión de riesgos y control interno, en Madrid y alrededores.</p>
             <div class="contact-links reveal">
                 <a href="mailto:haronid.morel@outlook.com" class="contact-link">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -1497,9 +1583,13 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     +34 624 43 02 77
                 </a>
-                <a href="https://www.linkedin.com/in/haronid-miranda-morel" target="_blank" rel="noopener" class="contact-link">
+                <a href="https://www.linkedin.com/in/haronid-morel" target="_blank" rel="noopener" class="contact-link">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn
+                </a>
+                <a href="assets/CV_Haronid_Morel.pdf" class="contact-link" download="CV_Haronid_Morel.pdf">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+                    Descargar CV
                 </a>
             </div>
         </div>
