@@ -6,7 +6,7 @@ Portafolio con mi trayectoria, competencias y proyectos aplicados en compliance,
 auditoría interna y análisis de datos en entornos regulados.
 
 ## Ver el portafolio
-**https://haronidmorel.github.io** ← reemplazar por la URL real
+**https://haronidmorel.github.io**
 
 ## Sobre mí
 Profesional de Compliance y Auditoría Interna con más de 5 años en el sector
